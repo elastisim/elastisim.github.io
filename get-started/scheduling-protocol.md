@@ -43,4 +43,4 @@ sequenceDiagram
     deactivate sim
 ```
 
-ElastiSim employs ZeroMQ to establish the connection and exchange data following the scheduling protocol. This design choice separates the concerns and allows ElastiSim to interface with any modern programming language. Users can develop scheduling algorithms in languages such as Python, while the entire simulation makes use of highly performant C++ routines. The [Scheduling interface](/scheduling-interface) section documents the details of exchanged data, all available interfaces, and their routines.
+ElastiSim employs ZeroMQ to establish the connection and exchange data following the scheduling protocol. This design choice separates the concerns and allows ElastiSim to interface with any modern programming language. Users can develop scheduling algorithms in languages such as Python, while the entire simulation makes use of highly performant C++ routines. The [Scheduling interface](/scheduling-interface/) section documents the details of exchanged data, all available interfaces, and their routines.

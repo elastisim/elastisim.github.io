@@ -43,12 +43,12 @@ CPU utilization requires active monitoring.
 
 The monitoring module measures CPU utilization per node. The column count in the resulting CSV file depends on the number of compute nodes.
 
-| Columns      | Value type                 | Description     |
-|--------------|----------------------------|-----------------|
-| Time         | float (seconds)            | Time (absolute) |
-| ``<Node_0>`` | float (percentage, [0..1]) | CPU utilization |
-| ...          | ...                        | ...             |
-| ``<Node_n>`` | float (percentage, [0..1]) | CPU utilization |
+| Columns      | Value type                | Description     |
+|--------------|---------------------------|-----------------|
+| Time         | float (seconds)           | Time (absolute) |
+| ``<Node_0>`` | float (percentage, [0,1]) | CPU utilization |
+| ...          | ...                       | ...             |
+| ``<Node_n>`` | float (percentage, [0,1]) | CPU utilization |
 
 {: .note }
 Values represent the utilization of the compute node's total computational power. As CPU workloads fully utilize the compute node, the utilization of a single node is either 0 % or 100 %.
@@ -60,10 +60,10 @@ Network activity requires active monitoring.
 
 ElastiSim defines network activity as the sum of the maximum bandwidth of all links in the simulated platform. Realistically, the network activity will never reach 100 %, as it is unlikely that all links in the network topology will be fully utilized simultaneously.
 
-| Columns     | Value type                 | Description      |
-|-------------|----------------------------|------------------|
-| Time        | float (seconds)            | Time (absolute)  |
-| Utilization | float (percentage, [0..1]) | Network activity |
+| Columns     | Value type                | Description      |
+|-------------|---------------------------|------------------|
+| Time        | float (seconds)           | Time (absolute)  |
+| Utilization | float (percentage, [0,1]) | Network activity |
 
 {: .note }
 Network activity does not consider PFS or loopback links.
@@ -75,13 +75,13 @@ PFS utilization requires active monitoring.
 
 The monitoring module senses the utilization of the PFS links specified in the configuration file. The results include absolute and relative utilization (relative to maximum bandwidth).
 
-| Columns      | Value type                 | Description           |
-|--------------|----------------------------|-----------------------|
-| Time         | float (seconds)            | Time (absolute)       |
-| Read         | float (bytes/s)            | PFS read utilization  |
-| Write        | float (bytes/s)            | PFS write utilization |
-| Read (rel.)  | float (percentage, [0..1]) | PFS read utilization  |
-| Write (rel.) | float (percentage, [0..1]) | PFS write utilization |
+| Columns      | Value type                | Description           |
+|--------------|---------------------------|-----------------------|
+| Time         | float (seconds)           | Time (absolute)       |
+| Read         | float (bytes/s)           | PFS read utilization  |
+| Write        | float (bytes/s)           | PFS write utilization |
+| Read (rel.)  | float (percentage, [0,1]) | PFS read utilization  |
+| Write (rel.) | float (percentage, [0,1]) | PFS write utilization |
 
 ## GPU utilization
 
@@ -90,9 +90,9 @@ GPU utilization requires active monitoring.
 
 Analogous to CPU utilization, the monitoring module measures GPU utilization per node. The utilization is a relative value and reflects partial usage in the case of multiple GPUs per node.
 
-| Columns      | Value type                 | Description     |
-|--------------|----------------------------|-----------------|
-| Time         | float (seconds)            | Time (absolute) |
-| ``<Node_0>`` | float (percentage, [0..1]) | GPU utilization |
-| ...          | ...                        | ...             |
-| ``<Node_n>`` | float (percentage, [0..1]) | GPU utilization |
+| Columns      | Value type                | Description     |
+|--------------|---------------------------|-----------------|
+| Time         | float (seconds)           | Time (absolute) |
+| ``<Node_0>`` | float (percentage, [0,1]) | GPU utilization |
+| ...          | ...                       | ...             |
+| ``<Node_n>`` | float (percentage, [0,1]) | GPU utilization |

@@ -22,7 +22,7 @@ ElastiSim exposes an interface to forward scheduling decisions during the simula
 
 ## Job properties
 
-In addition to all properties specified by the user (see [Job](/workload/job)), each job in the forwarded list has the following additional properties that the scheduler can use for decision-making:
+In addition to all properties specified by the user (see [Job](/workload/job/)), each job in the forwarded list has the following additional properties that the scheduler can use for decision-making:
 
 | Parameter                        | Description                                                      | Value type      | Note                                                                             |
 |----------------------------------|------------------------------------------------------------------|-----------------|----------------------------------------------------------------------------------|
