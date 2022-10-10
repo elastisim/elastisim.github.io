@@ -14,14 +14,14 @@ The job statistics file provides the results of each job in the simulated scenar
 
 | Columns         | Value type      | Description                                                                        |
 |-----------------|-----------------|------------------------------------------------------------------------------------|
-| ID              | integer         | see [Scheduling interface](/scheduling-interface/scheduling-interface)             |
+| ID              | integer         | see [Scheduling interface](/scheduling-interface)                                  |
 | Type            | string          | see [Job](/workload/job)                                                           |
 | Submit Time     | float (seconds) | see [Job](/workload/job)                                                           |
-| Start Time      | float (seconds) | see [Scheduling interface](/scheduling-interface/scheduling-interface)             |
-| End Time        | float (seconds) | see [Scheduling interface](/scheduling-interface/scheduling-interface)             |
-| Wait Time       | float (seconds) | see [Scheduling interface](/scheduling-interface/scheduling-interface)             |
-| Makespan        | float (seconds) | see [Scheduling interface](/scheduling-interface/scheduling-interface)             |
-| Turnaround Time | float (seconds) | see [Scheduling interface](/scheduling-interface/scheduling-interface)             |
+| Start Time      | float (seconds) | see [Scheduling interface](/scheduling-interface)                                  |
+| End Time        | float (seconds) | see [Scheduling interface](/scheduling-interface)                                  |
+| Wait Time       | float (seconds) | see [Scheduling interface](/scheduling-interface)                                  |
+| Makespan        | float (seconds) | see [Scheduling interface](/scheduling-interface)                                  |
+| Turnaround Time | float (seconds) | see [Scheduling interface](/scheduling-interface)                                  |
 | Status          | string          | Whether the job completed gracefully or was killed (``"completed"`` or ``killed``) |
 
 ## Node utilization
