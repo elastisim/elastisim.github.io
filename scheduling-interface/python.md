@@ -54,40 +54,40 @@ class JobState(Enum):
 
 | Variable                       | Type         | Description                                                             |
 |--------------------------------|--------------|-------------------------------------------------------------------------|
-| ``identifier``                 | ``int``      | see [Scheduling interface](/scheduling-interface/)                      |
-| ``type``                       | ``JobType``  | see [Job](/workload/job/)                                               |
-| ``state``                      | ``JobState`` | see [Scheduling interface](/scheduling-interface/)                      |
-| ``walltime``                   | ``float``    | see [Job](/workload/job/)                                               |
-| ``num_nodes``                  | ``int``      | see [Job](/workload/job/)                                               |
-| ``num_gpus_per_node``          | ``int``      | see [Job](/workload/job/)                                               |
-| ``num_nodes_min``              | ``int``      | see [Job](/workload/job/)                                               |
-| ``num_nodes_max``              | ``int``      | see [Job](/workload/job/)                                               |
-| ``num_gpus_per_node_min``      | ``int``      | see [Job](/workload/job/)                                               |
-| ``num_gpus_per_node_max``      | ``int``      | see [Job](/workload/job/)                                               |
-| ``submit_time``                | ``float``    | see [Job](/workload/job/)                                               |
-| ``start_time``                 | ``float``    | see [Scheduling interface](/scheduling-interface/)                      |
-| ``end_time``                   | ``float``    | see [Scheduling interface](/scheduling-interface/)                      |
-| ``wait_time``                  | ``float``    | see [Scheduling interface](/scheduling-interface/)                      |
-| ``makespan``                   | ``float``    | see [Scheduling interface](/scheduling-interface/)                      |
-| ``turnaround_time``            | ``float``    | see [Scheduling interface](/scheduling-interface/)                      |
-| ``assigned_nodes``             | ``list``     | see [Scheduling interface](/scheduling-interface/)                      |
+| ``identifier``                 | ``int``      | see [Scheduling interface](/scheduling-interface)                       |
+| ``type``                       | ``JobType``  | see [Job](/workload/job)                                                |
+| ``state``                      | ``JobState`` | see [Scheduling interface](/scheduling-interface)                       |
+| ``walltime``                   | ``float``    | see [Job](/workload/job)                                                |
+| ``num_nodes``                  | ``int``      | see [Job](/workload/job)                                                |
+| ``num_gpus_per_node``          | ``int``      | see [Job](/workload/job)                                                |
+| ``num_nodes_min``              | ``int``      | see [Job](/workload/job)                                                |
+| ``num_nodes_max``              | ``int``      | see [Job](/workload/job)                                                |
+| ``num_gpus_per_node_min``      | ``int``      | see [Job](/workload/job)                                                |
+| ``num_gpus_per_node_max``      | ``int``      | see [Job](/workload/job)                                                |
+| ``submit_time``                | ``float``    | see [Job](/workload/job)                                                |
+| ``start_time``                 | ``float``    | see [Scheduling interface](/scheduling-interface)                       |
+| ``end_time``                   | ``float``    | see [Scheduling interface](/scheduling-interface)                       |
+| ``wait_time``                  | ``float``    | see [Scheduling interface](/scheduling-interface)                       |
+| ``makespan``                   | ``float``    | see [Scheduling interface](/scheduling-interface)                       |
+| ``turnaround_time``            | ``float``    | see [Scheduling interface](/scheduling-interface)                       |
+| ``assigned_nodes``             | ``list``     | see [Scheduling interface](/scheduling-interface)                       |
 | ``assigned_node_ids``          | ``set``      | Set of node IDs assigned to the job                                     |
-| ``assigned_num_gpus_per_node`` | ``int``      | see [Scheduling interface](/scheduling-interface/)                      |
-| ``arguments``                  | ``dict``     | see [Job](/workload/job/)                                               |
-| ``attributes``                 | ``dict``     | see [Job](/workload/job/)                                               |
-| ``total_phase_count``          | ``int``      | see [Scheduling interface](/scheduling-interface/)                      |
-| ``completed_phases``           | ``int``      | see [Scheduling interface](/scheduling-interface/)                      |
+| ``assigned_num_gpus_per_node`` | ``int``      | see [Scheduling interface](/scheduling-interface)                       |
+| ``arguments``                  | ``dict``     | see [Job](/workload/job)                                                |
+| ``attributes``                 | ``dict``     | see [Job](/workload/job)                                                |
+| ``total_phase_count``          | ``int``      | see [Scheduling interface](/scheduling-interface)                       |
+| ``completed_phases``           | ``int``      | see [Scheduling interface](/scheduling-interface)                       |
 | ``modified``                   | ``bool``     | Whether the scheduler modified the job's configuration since invocation |
 | ``kill_flag``                  | ``bool``     | Whether the scheduler requested the kolling of the job since invocation |
 
 ### Member functions
 
-| Function signature                          | Arguments                                   | Argument types       | Description                                        |
-|---------------------------------------------|---------------------------------------------|----------------------|----------------------------------------------------|
-| ``assigned(nodes)``                         | Node or list of nodes (``nodes``)           | ``list`` or ``Node`` | see [Scheduling interface](/scheduling-interface/) |
-| ``remove(nodes)``                           | Node or list of nodes (``nodes``)           | ``list`` or ``Node`` | see [Scheduling interface](/scheduling-interface/) |
-| ``assign_num_gpus_per_node(gpus_per_node)`` | Number of GPUs per node (``gpus_per_node``) | ``int``              | see [Scheduling interface](/scheduling-interface/) |
-| ``kill()``                                  | None                                        | -                    | see [Scheduling interface](/scheduling-interface/) |
+| Function signature                          | Arguments                                   | Argument types       | Description                                       |
+|---------------------------------------------|---------------------------------------------|----------------------|---------------------------------------------------|
+| ``assigned(nodes)``                         | Node or list of nodes (``nodes``)           | ``list`` or ``Node`` | see [Scheduling interface](/scheduling-interface) |
+| ``remove(nodes)``                           | Node or list of nodes (``nodes``)           | ``list`` or ``Node`` | see [Scheduling interface](/scheduling-interface) |
+| ``assign_num_gpus_per_node(gpus_per_node)`` | Number of GPUs per node (``gpus_per_node``) | ``int``              | see [Scheduling interface](/scheduling-interface) |
+| ``kill()``                                  | None                                        | -                    | see [Scheduling interface](/scheduling-interface) |
 
 ## Node class
 
@@ -111,14 +111,14 @@ class NodeState(Enum):
 
 ### Member variables
 
-| Variable             | Type          | Description                                        |
-|----------------------|---------------|----------------------------------------------------|
-| ``identifier``       | ``int``       | see [Scheduling interface](/scheduling-interface/) |
-| ``type``             | ``NodeType``  | see [Scheduling interface](/scheduling-interface/) |
-| ``state``            | ``NodeState`` | see [Scheduling interface](/scheduling-interface/) |
-| ``assigned_jobs``    | ``list``      | see [Scheduling interface](/scheduling-interface/) |
-| ``assigned_job_ids`` | ``set``       | Set of job IDs assigned to the node                |
-| ``gpus``             | ``list``      | see [Scheduling interface](/scheduling-interface/) |
+| Variable             | Type          | Description                                       |
+|----------------------|---------------|---------------------------------------------------|
+| ``identifier``       | ``int``       | see [Scheduling interface](/scheduling-interface) |
+| ``type``             | ``NodeType``  | see [Scheduling interface](/scheduling-interface) |
+| ``state``            | ``NodeState`` | see [Scheduling interface](/scheduling-interface) |
+| ``assigned_jobs``    | ``list``      | see [Scheduling interface](/scheduling-interface) |
+| ``assigned_job_ids`` | ``set``       | Set of job IDs assigned to the node               |
+| ``gpus``             | ``list``      | see [Scheduling interface](/scheduling-interface) |
 
 ### GPU class
 
@@ -132,10 +132,10 @@ class GpuState(Enum):
 
 #### Member variables
 
-| Variable       | Type         | Description                                        |
-|----------------|--------------|----------------------------------------------------|
-| ``identifier`` | ``int``      | see [Scheduling interface](/scheduling-interface/) |
-| ``state``      | ``GpuState`` | see [Scheduling interface](/scheduling-interface/) |
+| Variable       | Type         | Description                                       |
+|----------------|--------------|---------------------------------------------------|
+| ``identifier`` | ``int``      | see [Scheduling interface](/scheduling-interface) |
+| ``state``      | ``GpuState`` | see [Scheduling interface](/scheduling-interface) |
 
 ## Example usage
 

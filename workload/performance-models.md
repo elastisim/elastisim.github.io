@@ -7,7 +7,7 @@ nav_order: 4
 
 # Performance models
 
-Performance models (i.e., human-readable mathematical functions) are a crucial feature of ElastiSim, enabling malleable (and moldable) workloads. All tasks (see [Task types](/workload/task-types/)) implicitly support performance models to specify either the load simulated on the platform or the number of iterations.
+Performance models (i.e., human-readable mathematical functions) are a crucial feature of ElastiSim, enabling malleable (and moldable) workloads. All tasks (see [Task types](/workload/task-types)) implicitly support performance models to specify either the load simulated on the platform or the number of iterations.
 
 The simulation engine evaluates performance models on each (re)configuration to a single number. In combination with variables representing the number of assigned resources, performance models are a powerful feature to describe adaptive workloads. ElastiSim supports the following variables in performance models for tasks:
 
@@ -19,7 +19,7 @@ The simulation engine evaluates performance models on each (re)configuration to 
 
 ## Job arguments
 
-Arguments specified for a job (see [Job](/workload/job/)) are automatically valid variables in all performance models. As multiple jobs can use the same application model, arguments can enable different workloads without modeling a new application. Furthermore, arguments also allow phases to use performance models in their number of iterations.
+Arguments specified for a job (see [Job](/workload/job)) are automatically valid variables in all performance models. As multiple jobs can use the same application model, arguments can enable different workloads without modeling a new application. Furthermore, arguments also allow phases to use performance models in their number of iterations.
 
 {: .note }
 Phases do not support variables representing the number of assigned resources in performance models, as this would break malleability based on scheduling points between phases (and phase iterations).
