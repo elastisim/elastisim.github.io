@@ -13,26 +13,33 @@ Each task has a specific type defining the injected load into the simulated plat
 
 All tasks carry a load simulated on the platform, which ElastiSim defines as the task's *payload*, and the unit of a payload depends on the task type (e.g., FLOPS for compute tasks or bytes for communication). Payloads are always defined using a single number and distributed among participating resources following a *payload distribution pattern*.
 
-ElastiSim defines two types of distribution patterns: *vector* and *matrix*.
-While vector distribution patterns consider a one-dimensional distribution (e.g., FLOPS per compute node), matrix patterns consider peer-to-peer distribution (e.g., communication matrix of compute nodes).
+ElastiSim defines two types of distribution patterns: *vector* and *matrix*. While vector distribution patterns consider a one-dimensional distribution (e.g., FLOPS per compute node), matrix distribution patterns define communication matrices.
 
 ### Vector distribution patterns
 
-| Pattern     | Description                                                                                             |
-|-------------|---------------------------------------------------------------------------------------------------------|
-| ``uniform`` | All assigned resources perform the specified payload without any distribution                           |
-| ``total``   | The payload is evenly distributed among all resources                                                   |
-| ``vector``  | An explicit vector defining the payload for each participating resource (only applicable to rigid jobs) |
+| Pattern                                    | Description                                                                                             |
+|--------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| ~~``total``~~ *(deprecated)* ``all_ranks`` | The payload is evenly distributed among all resources                                                   |
+| ``root_only``                              | Only the first resource performs the specified payload                                                  |
+| ``even_ranks``                             | The payload is evenly distributed among all even-numbered resources                                     |
+| ``odd_ranks``                              | The payload is evenly distributed among all odd-numbered resources                                      |
+| ``uniform``                                | All assigned resources perform the specified payload *without any distribution*                         |
+| ``vector``                                 | An explicit vector defining the payload for each participating resource (only applicable to rigid jobs) |
+
+{: .note }
+``uniform`` is the only exception to other distribution patterns (vector and matrix), as it does not distribute the workload but describes the payload *per resource*. It is syntactic sugar for the pattern ``all_ranks`` with the performance model ``<payload size> * num_nodes`` or ``<payload size> * num_gpus``.
 
 ### Matrix distribution patterns
 
 | Pattern                    | Description                                                                                                                                                                 |
 |----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ``all_to_all``             | The payload is evenly distributed among each possible pair of resources                                                                                                     |
-| ``ring``                   | The payload is evenly distributed and each resource communicates bi-directionally with its direct neighbor                                                                  |
-| ``ring_clockwise``         | The payload is evenly distributed and each resource communicates uni-directionally with its right neighbor                                                                  |
-| ``ring_counter_clockwise`` | The payload is evenly distributed and each resource communicates uni-directionally with its left neighbor                                                                   |
+| ``all_to_all``             | Each resource communicates bi-directionally with every other resource                                                                                                       |
+| ``gather``                 | The first resource receives uni-directionally from all remaining resources                                                                                                  |
+| ``scatter``                | The first resource sends uni-directionally to all remaining other resources                                                                                                 |
 | ``master_worker``          | The first resource bi-directionally communicates with all remaining resources                                                                                               |
+| ``ring``                   | Each resource communicates bi-directionally with its direct neighbors                                                                                                       |
+| ``ring_clockwise``         | Each resource communicates uni-directionally with its right neighbor                                                                                                        |
+| ``ring_counter_clockwise`` | Each resource communicates uni-directionally with its left neighbor                                                                                                         |
 | ``matrix``                 | An explicit matrix defining the payload for each possible pair of resources (defined as a vector with the dimension #resources × #resources, only applicable to rigid jobs) |
 
 ## CPU computation & communication task
@@ -79,7 +86,7 @@ Analogous to CPU tasks, GPU tasks also comprise computation and communication. H
   "type": "gpu",
   "name": "GPU compute & communication",
   "flops": 8e12,
-  "computation_pattern": "total",
+  "computation_pattern": "all_ranks",
   "bytes": 7e10,
   "communication_pattern": "ring_clockwise"
 }
@@ -111,7 +118,7 @@ In contrast to compute tasks, I/O tasks support asynchronous execution among the
   "type": "pfs_write",
   "name": "PFS write",
   "bytes": 5e11,
-  "pattern": "total"
+  "pattern": "all_ranks"
 }
 ```
 
@@ -161,7 +168,7 @@ ElastiSim defines sequences recursively, allowing them to be nested.
       "type": "pfs_write",
       "name": "PFS write",
       "bytes": 6e10,
-      "pattern": "total"
+      "pattern": "all_ranks"
     }
   ]
 }
