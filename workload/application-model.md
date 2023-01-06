@@ -59,14 +59,16 @@ See [Task types](/workload/task-types) for detailed task descriptions.
 
 ```json
 {
-  "on_init": [
-    {
-      "type": "pfs_read",
-      "name": "PFS read",
-      "bytes": 8e10,
-      "pattern": "total"
-    }
-  ],
+  "on_init": {
+    "tasks": [
+      {
+        "type": "pfs_read",
+        "name": "PFS read",
+        "bytes": 8e10,
+        "pattern": "total"
+      }
+    ]
+  },
   "phases": [
     {
       "iterations": 10,
@@ -81,7 +83,7 @@ See [Task types](/workload/task-types) for detailed task descriptions.
           "type": "pfs_write",
           "name": "PFS write",
           "bytes": 5e10,
-          "pattern": "total"
+          "pattern": "all_ranks"
         }
       ]
     }
