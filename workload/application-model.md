@@ -65,7 +65,7 @@ See [Task types](/workload/task-types) for detailed task descriptions.
         "type": "pfs_read",
         "name": "PFS read",
         "bytes": 8e10,
-        "pattern": "total"
+        "pattern": "all_ranks"
       }
     ]
   },
