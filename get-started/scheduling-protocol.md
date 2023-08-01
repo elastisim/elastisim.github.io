@@ -28,7 +28,7 @@ sequenceDiagram
     end
     sim->>sim: start simulation
     activate sim
-    loop every <scheduling interval><br/>while simulation is running
+    loop every <scheduling interval><br/>or at each invocation trigger<br/>while simulation is running
         sim->>sched: invoke
         deactivate sim
         activate sched

@@ -18,7 +18,7 @@ ElastiSim requires four libraries to be installed (or available):
 Depending on the scheduling interface, an additional ZeroMQ binding is required. ElastiSim currently supports a Python interface to write scheduling algorithms and therefore requires:
 - [PyZMQ](https://pyzmq.readthedocs.io/) to communicate with the simulator process
 
-## Build (on *nix systems)
+## Build (on Linux systems)
 
 To build and install ElastiSim, install [CMake](https://cmake.org/), and execute the following commands (replacing the values in the angle brackets):
 

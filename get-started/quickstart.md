@@ -7,7 +7,7 @@ nav_order: 1
 
 # Quickstart
 
-The easiest way to get started with ElastiSim is by cloning the example project available on [GitHub](https://github.com/elastisim/example-project). This scenario simulates an FCFS (first come, first serve) scheduling algorithm applied on 32 rigid jobs with alternating compute and I/O phases running on a crossbar topology with 128 compute nodes. The following steps will create a Docker container including all the required libraries for ElastiSim and start the simulation.
+The easiest way to get started with ElastiSim is by cloning the example project available on [GitHub](https://github.com/elastisim/example-project). This scenario simulates an FCFS (first come, first serve) scheduling algorithm applied on 64 rigid, moldable, and malleable jobs with alternating compute and I/O phases (see [Application model](#application-model)) running on a crossbar topology with 128 compute nodes. The following steps will create a Docker container including all the required libraries for ElastiSim and start the simulation.
 
 ## Installation
 
@@ -20,7 +20,7 @@ docker build -t elastisim .
 
 To run the simulation, execute the following commands in two different sessions:
 
-### \*nix:
+### Linux:
 ```sh
 docker run -v $PWD/data:/data -v $PWD/algorithm:/algorithm -u `id -u $USER` --name elastisim -it --rm elastisim /data/input/configuration.json --log=root.thresh:warning
 docker exec -u `id -u $USER` -it elastisim python3 /algorithm/algorithm.py
@@ -42,6 +42,26 @@ The first command runs the ElastiSim simulator process and accepts two inputs:
 - the configuration file (JSON)
 - the logging level
 
-For a more detailed output change `--log=root.thresh:warning` to `--log=root.thresh:info` (caution: verbose).
+For a more detailed output, change `--log=root.thresh:warning` to `--log=root.thresh:info` (caution: verbose).
 
 The second command runs the scheduling algorithm.
+
+# Application model
+
+The following flowchart visualizes the application model:
+
+```mermaid
+flowchart TD
+    Start([Start])
+    Start --> Read[PFS read]
+    Read --> Compute[Compute &<br>communicate]
+    Compute --> Write[PFS write]
+    Write --> WD{Workload<br>done?}
+    WD -->|yes|Stop([End])
+    WD -->|no|NC{New<br>configuration?}
+    NC -->|no|Compute
+    NC -->|yes|Reconf[[Reconfigure]]
+    Reconf -->|yes|Expanded{Expanded<br>node?}
+    Expanded -->|no|Compute
+    Expanded -->|yes|Read
+```

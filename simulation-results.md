@@ -51,7 +51,7 @@ The monitoring module measures CPU utilization per node. The column count in the
 | ``<Node_n>`` | float (percentage, [0,1]) | CPU utilization |
 
 {: .note }
-Values represent the utilization of the compute node's total computational power. As CPU workloads fully utilize the compute node, the utilization of a single node is either 0 % or 100 %.
+Values represent the utilization of the compute node's total computational power. As CPU workloads fully utilize the compute node, the utilization of a single node is either 0 % or 100 %. The only exception is for coupled CPU tasks (compute and communication), where the network is the bottleneck, resulting in underutilization of CPU resources.
 
 ## Network activity
 
@@ -96,3 +96,18 @@ Analogous to CPU utilization, the monitoring module measures GPU utilization per
 | ``<Node_0>`` | float (percentage, [0,1]) | GPU utilization |
 | ...          | ...                       | ...             |
 | ``<Node_n>`` | float (percentage, [0,1]) | GPU utilization |
+
+## Task times
+
+{: .note }
+Task time logging requires ``log_task_times`` to be set to ``true``.
+
+If activated, ElastiSim measures task times per job and node. The duration of a task sequence includes all subtask times.
+
+| Columns  | Value type      | Description                  |
+|----------|-----------------|------------------------------|
+| Time     | float (seconds) | Time (absolute)              |
+| Job      | integer         | Job ID                       |
+| Node     | string          | Node name                    |
+| Task     | string          | Task name (empty if not set) |
+| Duration | float (seconds) | Measured task duration       |

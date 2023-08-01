@@ -23,7 +23,7 @@ callouts:
     color: red
 
 mermaid:
-  version: "9.1.7"
+  version: "10.3.0"
 
 aux_links:
   "ElastiSim on GitHub":
