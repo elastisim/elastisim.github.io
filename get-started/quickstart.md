@@ -48,7 +48,7 @@ The second command runs the scheduling algorithm.
 
 # Application model
 
-The following flowchart visualizes the application model:
+The following flowchart visualizes the application model used in the example project.
 
 ```mermaid
 flowchart TD
@@ -57,10 +57,12 @@ flowchart TD
     Read --> Compute[Compute &<br>communicate]
     Compute --> Write[PFS write]
     Write --> WD{Workload<br>done?}
-    WD -->|yes|Stop([End])
-    WD -->|no|NC{New<br>configuration?}
-    NC -->|no|Compute
-    NC -->|yes|Reconf[[Reconfigure]]
+    WD -->|yes| Stop([End])
+    WD -->|no| Mall{Malleable<br>job?}
+    Mall -->|yes| NC{New<br>configuration?}
+    Mall -->|no| Compute
+    NC -->|no| Compute
+    NC -->|yes| Reconf[[Reconfigure]]
     Reconf --> Expanded{Expanded<br>node?}
     Expanded -->|no|Compute
     Expanded -->|yes|Read

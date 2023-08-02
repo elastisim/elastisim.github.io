@@ -17,7 +17,7 @@ ElastiSim periodically invokes the scheduling algorithm in a user-defined interv
 {: .important }
 The entire simulation stops at invocation time and continues after the scheduling algorithm returns.
 
-The following sequence diagram visualizes the scheduling protocol:
+The following sequence diagram visualizes the scheduling protocol.
 
 ```mermaid
 sequenceDiagram
