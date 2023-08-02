@@ -61,7 +61,7 @@ flowchart TD
     WD -->|no|NC{New<br>configuration?}
     NC -->|no|Compute
     NC -->|yes|Reconf[[Reconfigure]]
-    Reconf -->|yes|Expanded{Expanded<br>node?}
+    Reconf --> Expanded{Expanded<br>node?}
     Expanded -->|no|Compute
     Expanded -->|yes|Read
 ```
