@@ -25,7 +25,7 @@ if __name__ == '__main__':
 ```
 
 {: .important }
-Each invocation instantiates new Python objects (jobs, nodes, and GPUs).
+Each invocation instantiates new Python objects for entities modified during the simulation, such as jobs or nodes.
 
 ## Job class
 

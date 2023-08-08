@@ -12,7 +12,7 @@ During simulations, the simulator and the scheduler process are in constant comm
 {: .note }
 Do not confuse the scheduling protocol with the communication protocol. The scheduling protocol does **not** define *how* the data is exchanged.
 
-ElastiSim periodically invokes the scheduling algorithm in a user-defined interval (see Configuration for additional options). Each invocation contains a list of all compute nodes, jobs, and a map holding system information. After the scheduling algorithm makes a scheduling decision, the scheduler process forwards the decision to the simulator process, applying the new schedule.
+ElastiSim invokes the scheduling algorithm periodically in a user-defined interval or at events such as job submissions or scheduling points (see [Configuration](/configuration) for all options). Each invocation contains a list of compute nodes, jobs, and a map holding system information. After the scheduling algorithm makes a scheduling decision, the scheduler process forwards the decision to the simulator process, applying the new schedule.
 
 {: .important }
 The entire simulation stops at invocation time and continues after the scheduling algorithm returns.
