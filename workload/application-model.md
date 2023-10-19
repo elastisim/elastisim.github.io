@@ -45,10 +45,10 @@ Analogously, tasks are defined with the following properties:
 
 | Property         | Description                                                                                                                        | Value type | Default value | Mandatory |
 |------------------|------------------------------------------------------------------------------------------------------------------------------------|------------|---------------|-----------|
+| ``type``         | Task type (see [Task types](/workload/task-types))                                                                                 | string     | -             | Yes       |
 | ``name``         | Name of the task (only relevant in log messages)                                                                                   | bool       | None          | No        |
 | ``iterations``   | Number of iterations (i.e., repetitions) of the task                                                                               | integer    | 0             | No        |
 | ``synchronized`` | Whether all resources (i.e., compute nodes) synchronize before executing the task (similar to an *MPI_Barrier()* before execution) | bool       | false         | No        |
-| ``type``         | Task type (see [Task types](/workload/task-types))                                                                                 | bool       | true          | No        |
 
 ## Example application model
 
