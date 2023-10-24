@@ -75,8 +75,8 @@ The current storage model simulates data transfer but does not consider details 
                 <prop id="pfs_host" value="true"/>
             </host>
         </zone>
-        <link id="PFS_read" bandwidth="80GBps" latency="50ms"/>
-        <link id="PFS_write" bandwidth="50GBps" latency="50ms"/>
+        <link id="PFS_read" bandwidth="80GBps" latency="50us"/>
+        <link id="PFS_write" bandwidth="50GBps" latency="50us"/>
         <zoneRoute src="PFS_zone" dst="Crossbar" gw_src="PFS"
                    gw_dst="DA_Crossbar_router" symmetrical="NO">
             <link_ctn id="PFS_read"/>
@@ -127,8 +127,8 @@ Properties defined in ``<cluster>`` environments apply to all hosts.
                 <prop id="pfs_host" value="true"/>
             </host>
         </zone>
-        <link id="PFS_read" bandwidth="80GBps" latency="50ms"/>
-        <link id="PFS_write" bandwidth="50GBps" latency="50ms"/>
+        <link id="PFS_read" bandwidth="80GBps" latency="50us"/>
+        <link id="PFS_write" bandwidth="50GBps" latency="50us"/>
         <zoneRoute src="PFS_zone" dst="Crossbar" gw_src="PFS"
                    gw_dst="DA_Crossbar_router" symmetrical="NO">
             <link_ctn id="PFS_read"/>
@@ -181,8 +181,8 @@ Users can extend compute nodes with multiple GPUs by setting the ``num_gpus`` pr
                 <prop id="pfs_host" value="true"/>
             </host>
         </zone>
-        <link id="PFS_read" bandwidth="80GBps" latency="50ms"/>
-        <link id="PFS_write" bandwidth="50GBps" latency="50ms"/>
+        <link id="PFS_read" bandwidth="80GBps" latency="50us"/>
+        <link id="PFS_write" bandwidth="50GBps" latency="50us"/>
         <zoneRoute src="PFS_zone" dst="Crossbar" gw_src="PFS"
                    gw_dst="DA_Crossbar_router" symmetrical="NO">
             <link_ctn id="PFS_read"/>
