@@ -17,14 +17,14 @@ ElastiSim defines two types of distribution patterns: *vector* and *matrix*. Whi
 
 ### Vector distribution patterns
 
-| Pattern                                    | Description                                                                                             |
-|--------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| ~~``total``~~ *(deprecated)* ``all_ranks`` | The payload is evenly distributed among all resources                                                   |
-| ``root_only``                              | Only the first resource performs the specified payload                                                  |
-| ``even_ranks``                             | The payload is evenly distributed among all even-numbered resources                                     |
-| ``odd_ranks``                              | The payload is evenly distributed among all odd-numbered resources                                      |
-| ``uniform``                                | All assigned resources perform the specified payload *without any distribution*                         |
-| ``vector``                                 | An explicit vector defining the payload for each participating resource (only applicable to rigid jobs) |
+| Pattern        | Description                                                                                             |
+|----------------|---------------------------------------------------------------------------------------------------------|
+| ``all_ranks``  | The payload is evenly distributed among all resources                                                   |
+| ``root_only``  | Only the first resource performs the specified payload                                                  |
+| ``even_ranks`` | The payload is evenly distributed among all even-numbered resources                                     |
+| ``odd_ranks``  | The payload is evenly distributed among all odd-numbered resources                                      |
+| ``uniform``    | All assigned resources perform the specified payload *without any distribution*                         |
+| ``vector``     | An explicit vector defining the payload for each participating resource (only applicable to rigid jobs) |
 
 {: .note }
 ``uniform`` is the only exception to other distribution patterns (vector and matrix), as it does not distribute the workload but describes the payload *per resource*. It is syntactic sugar for the pattern ``all_ranks`` with the performance model ``<payload size> * num_nodes`` or ``<payload size> * num_gpus``.

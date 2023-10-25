@@ -20,14 +20,14 @@ Scheduling decisions to reconfigure a job are not applied immediately but when t
 
 Users define phases by specifying the following properties using the JSON format:
 
-| Property                   | Description                                                                                                          | Value type | Default value | Mandatory |
-|----------------------------|----------------------------------------------------------------------------------------------------------------------|------------|---------------|-----------|
-| ``phases``                 | Array containing all phases (top-level structure)                                                                    | array      | -             | Yes       |
-| ``iterations``             | Number of iterations (i.e., repetitions) of the phase                                                                | integer    | 0             | No        |
-| ``scheduling_point``       | Whether a scheduling point is included at the end of (each iteration of) the phase                                   | bool       | true          | No        |
-| ``final_scheduling_point`` | Whether the final scheduling point is included                                                                       | bool       | true          | No        |
-| ``barrier``                | Whether there is a barrier at the end of the phase (only considered when there is no corresponding scheduling point) | bool       | true          | No        |
-| ``tasks``                  | Array holding the tasks of the phase                                                                                 | array      | -             | Yes       |
+| Property                   | Description                                                                                                          | Value type                                                                 | Default value | Mandatory |
+|----------------------------|----------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|---------------|-----------|
+| ``phases``                 | Array containing all phases (top-level structure)                                                                    | array                                                                      | -             | Yes       |
+| ``iterations``             | Number of iterations (i.e., repetitions) of the phase (has to be inferable at start time)                            | integer or string (see [Performance models](/workload/performance-models)) | 0             | No        |
+| ``scheduling_point``       | Whether a scheduling point is included at the end of (each iteration of) the phase                                   | bool                                                                       | true          | No        |
+| ``final_scheduling_point`` | Whether the final scheduling point is included                                                                       | bool                                                                       | true          | No        |
+| ``barrier``                | Whether there is a barrier at the end of the phase (only considered when there is no corresponding scheduling point) | bool                                                                       | true          | No        |
+| ``tasks``                  | Array holding the tasks of the phase                                                                                 | array                                                                      | -             | Yes       |
 
 ### Reconfiguration penalty
 
@@ -43,12 +43,12 @@ Reconfiguring applications during runtime can introduce additional overhead whil
 
 Analogously, tasks are defined with the following properties:
 
-| Property         | Description                                                                                                                        | Value type | Default value | Mandatory |
-|------------------|------------------------------------------------------------------------------------------------------------------------------------|------------|---------------|-----------|
-| ``type``         | Task type (see [Task types](/workload/task-types))                                                                                 | string     | -             | Yes       |
-| ``name``         | Name of the task (only relevant in log messages)                                                                                   | bool       | None          | No        |
-| ``iterations``   | Number of iterations (i.e., repetitions) of the task                                                                               | integer    | 0             | No        |
-| ``synchronized`` | Whether all resources (i.e., compute nodes) synchronize before executing the task (similar to an *MPI_Barrier()* before execution) | bool       | false         | No        |
+| Property         | Description                                                                                                                        | Value type                                                                 | Default value | Mandatory |
+|------------------|------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|---------------|-----------|
+| ``type``         | Task type (see [Task types](/workload/task-types))                                                                                 | string                                                                     | -             | Yes       |
+| ``name``         | Name of the task (only relevant in log messages)                                                                                   | string                                                                     | None          | No        |
+| ``iterations``   | Number of iterations (i.e., repetitions) of the task                                                                               | integer or string (see [Performance models](/workload/performance-models)) | 0             | No        |
+| ``synchronized`` | Whether all resources (i.e., compute nodes) synchronize before executing the task (similar to an *MPI_Barrier()* before execution) | bool                                                                       | false         | No        |
 
 ## Example application model
 
