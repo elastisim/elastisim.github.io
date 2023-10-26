@@ -9,15 +9,15 @@ nav_order: 1
 
 ElastiSim supports rigid, moldable, and malleable jobs[^1], holding properties that the scheduling algorithm can use to make scheduling decisions. Jobs require the following properties that users specify using the JSON format:
 
-| Property              | Description                                                   | Value type        | Default value | Mandatory |
-|-----------------------|---------------------------------------------------------------|-------------------|---------------|-----------|
-| ``jobs``              | Array of all jobs (top-level structure)                       | array             | -             | Yes       |
-| ``type``              | Job type (``"rigid"``, ``"moldable"``, or ``"malleable"``)    | string            | -             | Yes       |
-| ``submit_time``       | Submission time of the job (absolute value)                   | integer (seconds) | -             | Yes       |
-| ``application_model`` | Application model of the job (path to file)                   | string            | -             | Yes       |
-| ``walltime``          | Time limit of a job before it is killed (0 for no limit)      | integer (seconds) | 0             | No        |
-| ``arguments``         | Custom arguments (i.e., variables) used in performance models | map               | empty map     | No        |
-| ``attributes``        | Custom attributes forwarded to the scheduler (e.g., priority) | map               | empty map     | No        |
+| Property              | Description                                                   | Value type      | Default value | Mandatory |
+|-----------------------|---------------------------------------------------------------|-----------------|---------------|-----------|
+| ``jobs``              | Array of all jobs (top-level structure)                       | array           | -             | Yes       |
+| ``type``              | Job type (``"rigid"``, ``"moldable"``, or ``"malleable"``)    | string          | -             | Yes       |
+| ``submit_time``       | Submission time of the job (absolute value)                   | float (seconds) | -             | Yes       |
+| ``application_model`` | Application model of the job (path to file)                   | string          | -             | Yes       |
+| ``walltime``          | Time limit of a job before it is killed (0 for no limit)      | float (seconds) | 0             | No        |
+| ``arguments``         | Custom arguments (i.e., variables) used in performance models | map             | empty map     | No        |
+| ``attributes``        | Custom attributes forwarded to the scheduler (e.g., priority) | map             | empty map     | No        |
 
 ![A figure visualizing the different classifications of a job](/assets/images/Job_classification.svg "Job classifications"){: .d-block .mx-auto width="100%" }
 
