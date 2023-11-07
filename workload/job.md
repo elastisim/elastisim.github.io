@@ -6,18 +6,30 @@ nav_order: 1
 ---
 
 # Job
+Jobs hold properties that the scheduling algorithm can use to make scheduling decisions. Its type defines whether the job supports reconfigurations (i.e., resource modifications during runtime) and which entity is responsible for initiating the request. Reconfiguration requests are either initiated by the scheduler or the job itself. While jobs must accept reconfiguration requests initiated by the scheduler, the scheduler can decline those initiated by jobs (so-called evolving requests).
 
-ElastiSim supports rigid, moldable, and malleable jobs[^1], holding properties that the scheduling algorithm can use to make scheduling decisions. Jobs require the following properties that users specify using the JSON format:
+In addition to rigid, moldable, malleable, and evolving jobs, ElastiSim introduces a fifth job type, _adaptive_ jobs, combining the features of malleable and evolving jobs. The following table describes the job types with their corresponding characteristics:
 
-| Property              | Description                                                   | Value type      | Default value | Mandatory |
-|-----------------------|---------------------------------------------------------------|-----------------|---------------|-----------|
-| ``jobs``              | Array of all jobs (top-level structure)                       | array           | -             | Yes       |
-| ``type``              | Job type (``"rigid"``, ``"moldable"``, or ``"malleable"``)    | string          | -             | Yes       |
-| ``submit_time``       | Submission time of the job (absolute value)                   | float (seconds) | -             | Yes       |
-| ``application_model`` | Application model of the job (path to file)                   | string          | -             | Yes       |
-| ``walltime``          | Time limit of a job before it is killed (0 for no limit)      | float (seconds) | 0             | No        |
-| ``arguments``         | Custom arguments (i.e., variables) used in performance models | map             | empty map     | No        |
-| ``attributes``        | Custom attributes forwarded to the scheduler (e.g., priority) | map             | empty map     | No        |
+| Type      | Resources | Reconfigurable during runtime | Accepts reconfiguration requests | Can request reconfigurations |
+|-----------|-----------|-------------------------------|----------------------------------|------------------------------|
+| Rigid     | Fixed     | No                            | -                                | -                            |
+| Moldable  | Variable  | No                            | -                                | -                            |
+| Malleable | Variable  | Yes                           | Yes                              | No                           |
+| Evolving  | Variable  | Yes                           | No                               | Yes                          |
+| Adaptive  | Variable  | Yes                           | Yes                              | Yes                          |
+
+
+Each job holds properties that the scheduling algorithm can use to make scheduling decisions. Users can specify the following properties using the JSON format:
+
+| Property              | Description                                                                            | Value type      | Default value | Mandatory |
+|-----------------------|----------------------------------------------------------------------------------------|-----------------|---------------|-----------|
+| ``jobs``              | Array of all jobs (top-level structure)                                                | array           | -             | Yes       |
+| ``type``              | Job type (``"rigid"``, ``"moldable"``, ``"malleable"``, ``evolving``, or ``adaptive``) | string          | -             | Yes       |
+| ``submit_time``       | Submission time of the job (absolute value)                                            | float (seconds) | -             | Yes       |
+| ``application_model`` | Application model of the job (path to file)                                            | string          | -             | Yes       |
+| ``walltime``          | Time limit of a job before it is killed (0 for no limit)                               | float (seconds) | 0             | No        |
+| ``arguments``         | Custom arguments (i.e., variables) used in performance models                          | map             | empty map     | No        |
+| ``attributes``        | Custom attributes forwarded to the scheduler (e.g., priority)                          | map             | empty map     | No        |
 
 ![A figure visualizing the different classifications of a job](/assets/images/Job_classification.svg "Job classifications"){: .d-block .mx-auto width="100%" }
 
@@ -31,7 +43,7 @@ As rigid jobs have a fixed number of resources, they require the number of nodes
 {: .important }
 Jobs make requests based on compute nodes, not CPUs or CPU cores, respectively.
 
-Adaptive jobs have a flexible number of resources, specified using the following properties:
+Moldable, malleable, evolving and adaptive jobs have a variable number of resources, specified using the following properties:
 
 | Property                  | Description                                 | Value type | Default value | Mandatory |
 |---------------------------|---------------------------------------------|------------|---------------|-----------|
@@ -75,7 +87,7 @@ ElastiSim allows minimum and maximum values to be the same (e.g., malleable jobs
       }
     },
     {
-      "type": "moldable",
+      "type": "evolving",
       "submit_time": 120,
       "num_nodes_min": 8,
       "num_nodes_max": 24,
@@ -99,7 +111,7 @@ ElastiSim allows minimum and maximum values to be the same (e.g., malleable jobs
       }
     },
     {
-      "type": "malleable",
+      "type": "adaptive",
       "submit_time": 480,
       "num_nodes_min": 10,
       "num_nodes_max": 20,
@@ -130,5 +142,3 @@ ElastiSim allows minimum and maximum values to be the same (e.g., malleable jobs
   ]
 }
 ```
-
-[^1]: Malleable and evolving jobs are often classified as adaptive jobs.

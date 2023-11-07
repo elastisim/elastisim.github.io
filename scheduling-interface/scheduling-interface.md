@@ -15,6 +15,14 @@ ElastiSim exposes an interface to forward scheduling decisions during the simula
 | Time                  | Current simulation time                                                             | float (seconds) |
 | Jobs                  | List of all jobs submitted at the current simulation time (including finished jobs) | list            |
 | Nodes                 | List of all compute nodes of the platform                                           | list            |
+| Invocation type       | Type of the event triggering the invocation                                         | enum            |
+| Triggering job        | Job triggering the invocation (only available in non-periodic invocations)          | Job             |
+| Evolving requests     | Number of requested nodes (only available in evolving requests)                     | int             |
+
+The following additional properties are available if ``forward_io_information`` is set to ``true`` (see [Configuration](/configuration)):
+
+| Parameter             | Description                                                                         | Value type      |
+|-----------------------|-------------------------------------------------------------------------------------|-----------------|
 | PFS read bandwidth    | Maximum available read bandwidth to the PFS                                         | float (bytes/s) |
 | PFS write bandwidth   | Maximum available write bandwidth to the PFS                                        | float (bytes/s) |
 | PFS read utilization  | Current utilization of the read bandwidth to the PFS                                | float (bytes/s) |
@@ -103,3 +111,4 @@ Custom schedulers can apply the following operations on jobs:
 | Remove node                    | node or list of nodes | Removes the specified node(s) from the job                       |
 | Assign number of GPUs per node | integer               | Assigns the number of GPUs per node to use                       |
 | Kill                           | none                  | Instructs the batch system to kill the job with immediate effect |
+| Update runtime argument        | Key-value pair        | Updates (or initially assign) a runtime argument                 |

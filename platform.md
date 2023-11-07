@@ -153,6 +153,9 @@ Modern file systems for node-local burst buffers such as BeeOND or GekkoFS suppo
 </host>
 ```
 
+{: .important }
+Due to limitations in the underlying simulation framework, wide-striped burst buffer tasks simulate two independent activities per node: (1) concurrent access to each local disk and (2) transferring data over the network. To simulate the behavior of wide-striped access, ElastiSim starts multiple concurrent read or write activities, respectively, on the burst buffer of each node participating in the task, depending on the applied payload distribution pattern. Although the task's duration correctly depends on the longer activity, the simulated throughput will not depend on the bottlenecking transfer rate (i.e., the burst buffer or the network) as the activities are independent.
+
 ## GPU model
 
 Users can extend compute nodes with multiple GPUs by setting the ``num_gpus`` property to any integer number and defining the processing power of each GPU by specifying ``flops_per_gpu``. In the case of multiple GPUs on a node, ElastiSim creates a fully connected GPU topology and expects the property ``gpu_to_gpu_bandwidth``, defining the bandwidth for each possible GPU pair on a node. We extend the previous platform by four GPUs per node with a processing power of 20 TFLOPS/s per GPU and connect each GPU pair with 50 GByte/s.

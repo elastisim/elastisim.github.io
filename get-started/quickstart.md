@@ -7,7 +7,7 @@ nav_order: 1
 
 # Quickstart
 
-The easiest way to get started with ElastiSim is by cloning the example project available on [GitHub](https://github.com/elastisim/example-project). This scenario simulates an FCFS (first come, first serve) scheduling algorithm applied on 64 rigid, moldable, and malleable jobs with alternating compute and I/O phases (see [Application model](#application-model)) running on a crossbar topology with 128 compute nodes. The following steps will create a Docker container including all the required libraries for ElastiSim and start the simulation.
+The easiest way to get started with ElastiSim is by cloning the example project available on [GitHub](https://github.com/elastisim/example-project). This scenario simulates an FCFS (first come, first serve) scheduling algorithm applied on 1000 jobs—including all job types—with alternating compute and I/O phases (see [Application model](#application-model)) running on a crossbar topology with 128 compute nodes. While evolving and adaptive jobs request a new configuration at the beginning of each iteration of the specified phase, malleable jobs accept any reconfiguration. The scheduler accepts all evolving requests that shrink the job but accepts evolving requests to expand the job only to a maximum of available nodes. For malleable jobs, the scheduler expands to the highest possible number of nodes based on the number of available nodes. The following steps will create a Docker container including all the required libraries for ElastiSim and start the simulation.
 
 ## Installation
 
@@ -53,17 +53,28 @@ The following flowchart visualizes the application model used in the example pro
 ```mermaid
 flowchart TD
     Start([Start])
-    Start --> Read[PFS read]
-    Read --> Compute[Compute &<br>communicate]
-    Compute --> Write[PFS write]
+    Start --> Read["Read model from PFS<br>(root only)"]
+    Read --> Scatter[Scatter model]
+    Scatter --> Compute[Compute &<br>communicate]
+    Compute --> Write[Checkpoint to PFS]
     Write --> WD{Workload<br>done?}
     WD -->|yes| Stop([End])
-    WD -->|no| Mall{Malleable<br>job?}
-    Mall -->|yes| NC{New<br>configuration?}
+    WD -->|no| Evol{Evolving or<br>adaptive job?}
+    Evol -->|yes| Even{Number of phase<br>iteration even?}
+    Evol -->|no| Mall{Malleable<br>job?}
+    Even -->|yes| Req_more[[Request four<br>fewer nodes]]
+    Even -->|no| Req_fewer[[Request four<br>more nodes]]
+    Req_more -.-> Inv
+    Req_fewer -.-> Inv
+    Mall -.->|yes| Inv
+    Inv[[invoke scheduler]]
+    Inv -.-> NC{New<br>configuration?}
     Mall -->|no| Compute
     NC -->|no| Compute
     NC -->|yes| Reconf[[Reconfigure]]
     Reconf --> Expanded{Expanded<br>node?}
-    Expanded -->|no|Compute
-    Expanded -->|yes|Read
+    Expanded --> Read
 ```
+
+{: .note }
+Communicating with the scheduler is the runtime's responsibility and is not controlled by the application model (represented with dotted links).

@@ -7,7 +7,7 @@ nav_order: 4
 
 # Performance models
 
-Performance models (i.e., human-readable mathematical functions) are a crucial feature of ElastiSim, enabling malleable (and moldable) workloads. All tasks (see [Task types](/workload/task-types)) implicitly support performance models to specify either the load simulated on the platform or the number of iterations.
+Performance models (i.e., human-readable mathematical functions) are a crucial feature of ElastiSim, enabling elastic workloads. All tasks (see [Task types](/workload/task-types)) implicitly support performance models to specify either the load simulated on the platform or the number of iterations.
 
 The simulation engine evaluates performance models on each (re)configuration to a single number. In combination with variables representing the number of assigned resources, performance models are a powerful feature to describe adaptive workloads. ElastiSim supports the following variables in performance models for tasks:
 
@@ -16,6 +16,12 @@ The simulation engine evaluates performance models on each (re)configuration to 
 | ``num_nodes``         | The number of assigned compute nodes                                                      |
 | ``num_gpus_per_node`` | The number of assigned GPUs per compute node                                              |
 | ``num_gpus``          | The total number of assigned GPUs (syntactic sugar for ``num_nodes * num_gpus_per_node``) |
+| ``num_nodes_min``     | Requested number of nodes (minimum, only available for evolving requests)                 |
+| ``num_nodes_max``     | Requested number of nodes (maximum, only available for evolving requests)                 |
+| ``phase_iteration``   | Iteration number of the phase (starting at 0, only available for evolving requests)       |
+
+{: .note }
+Phases specify evolving requests _before_ they start. The variable ``phase_iteration`` starts with the value 0 (e.g., for a phase with five iterations, ``phase_iteration`` will evaluate to the values [0,4]). In phases that are not repetitively executed (i.e., ``iterations`` is unspecified or 1), ``phase_iteration`` will evaluate to 0.
 
 ## Job arguments
 
