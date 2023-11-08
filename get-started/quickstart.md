@@ -62,8 +62,8 @@ flowchart TD
     WD -->|no| Evol{Evolving or<br>adaptive job?}
     Evol -->|yes| Even{Number of phase<br>iteration even?}
     Evol -->|no| Mall{Malleable<br>job?}
-    Even -->|yes| Req_more[[Request four<br>fewer nodes]]
-    Even -->|no| Req_fewer[[Request four<br>more nodes]]
+    Even -->|yes| Req_more[Request four<br>fewer nodes]
+    Even -->|no| Req_fewer[Request four<br>more nodes]
     Req_more -.-> Inv
     Req_fewer -.-> Inv
     Mall -.->|yes| Inv
