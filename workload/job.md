@@ -8,7 +8,7 @@ nav_order: 1
 # Job
 Jobs hold properties that the scheduling algorithm can use to make scheduling decisions. Its type defines whether the job supports reconfigurations (i.e., resource modifications during runtime) and which entity is responsible for initiating the request. Reconfiguration requests are either initiated by the scheduler or the job itself. While jobs must accept reconfiguration requests initiated by the scheduler, the scheduler can decline those initiated by jobs (so-called evolving requests).
 
-In addition to rigid, moldable, malleable, and evolving jobs, ElastiSim introduces a fifth job type, _adaptive_ jobs, combining the features of malleable and evolving jobs. The following table describes the job types with their corresponding characteristics:
+In addition to rigid, moldable, malleable, and evolving jobs, ElastiSim supports a fifth job type, introduced as _adaptive_ jobs, combining the features of malleable and evolving jobs. The following table describes the job types with their corresponding characteristics:
 
 | Type      | Resources | Reconfigurable during runtime | Accepts reconfiguration requests | Can request reconfigurations |
 |-----------|-----------|-------------------------------|----------------------------------|------------------------------|
