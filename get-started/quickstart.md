@@ -72,8 +72,7 @@ flowchart TD
     Mall -->|no| Compute
     NC -->|no| Compute
     NC -->|yes| Reconf[[Reconfigure]]
-    Reconf --> Expanded{Expanded<br>node?}
-    Expanded --> Read
+    Reconf --> Read
 ```
 
 {: .note }
