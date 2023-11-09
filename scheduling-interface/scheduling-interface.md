@@ -8,7 +8,7 @@ permalink: /scheduling-interface
 
 # Scheduling interface
 
-ElastiSim exposes an interface to forward scheduling decisions during the simulation and thus allows the integration of custom scheduling policies. Following the scheduling protocol, the simulator process periodically invokes the scheduler process. Users must provide an algorithm (function) that returns after modifying arguments passed via the interface. Each invocation of the algorithm contains the following information on the current state of the simulated scenario:
+ElastiSim exposes an interface to forward scheduling decisions during the simulation and thus allows the integration of custom scheduling policies. Following the scheduling protocol, the simulator process invokes the scheduler process periodically or at certain events. Users must provide an algorithm (function) that returns after modifying arguments passed via the interface. Each invocation of the algorithm contains the following information on the current state of the simulated scenario:
 
 | Parameter             | Description                                                                         | Value type      |
 |-----------------------|-------------------------------------------------------------------------------------|-----------------|
