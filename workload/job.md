@@ -10,13 +10,13 @@ Jobs in ElastiSim have a designated type that defines (1) whether the job suppor
 
 In addition to rigid, moldable, malleable, and evolving jobs, ElastiSim supports a fifth job type, introduced as _adaptive_ jobs, combining the features of malleable and evolving jobs. The following table describes the job types with their corresponding characteristics:
 
-| Type      | Resources | Reconfigurable during runtime | Accepts reconfiguration requests | Can request reconfigurations |
-|-----------|-----------|-------------------------------|----------------------------------|------------------------------|
-| Rigid     | Fixed     | No                            | -                                | -                            |
-| Moldable  | Variable  | No                            | -                                | -                            |
-| Malleable | Variable  | Yes                           | Yes                              | No                           |
-| Evolving  | Variable  | Yes                           | No                               | Yes                          |
-| Adaptive  | Variable  | Yes                           | Yes                              | Yes                          |
+| Type      | Number of resources | Reconfigurable during runtime | Accepts reconfiguration requests | Can request reconfigurations |
+|-----------|---------------------|-------------------------------|----------------------------------|------------------------------|
+| Rigid     | Fixed               | No                            | -                                | -                            |
+| Moldable  | Variable            | No                            | -                                | -                            |
+| Malleable | Variable            | Yes                           | Yes                              | No                           |
+| Evolving  | Variable            | Yes                           | No                               | Yes                          |
+| Adaptive  | Variable            | Yes                           | Yes                              | Yes                          |
 
 
 Each job holds properties that the scheduling algorithm can use to make scheduling decisions. Users can specify the following properties using the JSON format:
