@@ -16,6 +16,7 @@ The configuration file is the only argument passed to ElastiSim and defines the 
 | ``schedule_on_job_submit``       | Whether a job submission triggers a scheduling algorithm invocation                                                                  | bool              | false         | Yes, if ``scheduling_interval`` is false                                    |
 | ``schedule_on_job_finalize``     | Whether a job finalization triggers a scheduling algorithm invocation                                                                | bool              | false         | Yes, if ``scheduling_interval`` is false                                    |
 | ``schedule_on_scheduling_point`` | Whether a job reaching a scheduling point triggers a scheduling algorithm invocation                                                 | bool              | false         | No                                                                          |
+| ``schedule_on_reconfiguration``  | Whether a job reconfiguration triggers a scheduling algorithm invocation                                                             | bool              | false         | No                                                                          |
 | ``scheduling_interval``          | Invocation interval of the scheduling algorithm                                                                                      | integer (seconds) | 0 (disabled)  | Yes, if ``schedule_on_job_submit`` or ``schedule_on_job_finalize`` is false |
 | ``min_scheduling_interval``      | Minimum time between two scheduling algorithm invocations                                                                            | integer (seconds) | 0 (disabled)  | No                                                                          |
 | ``allow_oversubscription``       | Whether the scheduler can oversubscribe compute nodes with multiple jobs                                                             | bool              | false         | No                                                                          |
@@ -38,6 +39,12 @@ The configuration file is the only argument passed to ElastiSim and defines the 
 
 {: .warning }
 Setting the sensing interval too small can significantly increase simulation times, as the discrete-event simulation engine will fire an event at each sensing interval. Logging task times can also introduce a significant overhead.
+
+{: .note }
+ElastiSim supports node migration (i.e., transferring nodes from one job to another) in a single scheduling step when the decision is taken at an invocation triggered by a scheduling point (requires ``schedule_on_scheduling_point`` to be ``true``) or evolving request.
+
+{: .important }
+``schedule_on_reconfiguration`` triggers the scheduling algorithm _after_ applying a **pending** resource reconfiguration but _before_ executing a potential ``on_reconfiguration`` or ``on_expansion`` phase. This invocation trigger enables scheduling decisions when resources change their state, such as nodes becoming free after a shrink operation when a job reaches its next scheduling point. However, a job reconfigured during a scheduling point or evolving request will not trigger the algorithm again when the reconfiguration is applied.
 
 ## Example configuration
 
