@@ -11,7 +11,7 @@ If you have used ElastiSim in your research or publication, please cite the orig
 ### BibTeX
 
 ```
-@INPROCEEDINGS{10.1145/3545008.3545046,
+@inproceedings{10.1145/3545008.3545046,
     author = {% raw %}{\"{O}zden, Taylan and Beringer, Tim and Mazaheri, Arya and Fard, Hamid Mohammadi and Wolf, Felix},{% endraw %}
     title = {ElastiSim: A Batch-System Simulator for Malleable Workloads},
     year = {2022},
