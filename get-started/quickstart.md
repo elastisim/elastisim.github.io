@@ -15,7 +15,7 @@ The scenario in the example project simulates an FCFS (first-come, first-serve) 
 
 ## Installation
 
-To build the Dev Container, clone [elastisim-devcontainer](https://github.com/elastisim/elastisim-devcontainer) and open the folder in VSCode, where you will see a notification that the repository contains Dev Container files. Open the repository in the container and choose _ElastiSim User_ or _Contributor_, respectively. The container will now build automatically and set up all necessary files.
+To build the Dev Container, clone [elastisim-devcontainer](https://github.com/elastisim/elastisim-devcontainer) and open the folder in VSCode. Show all commands (F1), select _Rebuild and Reopen in Container_, and choose _ElastiSim User_ or _ElastiSim Contributor_, respectively. The container will now build automatically and set up all necessary files.
 
 ## Simulation
 
