@@ -19,7 +19,7 @@ To build the Dev Container, clone [elastisim-devcontainer](https://github.com/el
 
 ## Simulation
 
-To run the simulation, execute the _Run ElastiSim Scenario_ from the _Run and Debug_ panel. If you are using the contributor Dev Container, you must build the project first using the CMake configuration files provided by the container.
+To run the simulation, execute the _Run ElastiSim Scenario_ from the _Run and Debug_ panel. This profile will launch two processes, the simulation engine and the example algorithm. If you are using the contributor Dev Container, you must build the project first using the CMake configuration files provided by the container.
 
 For a more detailed output, change the arguments of the simulation engine from `--log=root.thresh:warning` to `--log=root.thresh:info` in the launch.json file under the .vscode folder (caution: verbose).
 
