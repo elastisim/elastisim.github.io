@@ -11,17 +11,17 @@ Performance models (i.e., human-readable mathematical functions) are a crucial f
 
 The simulation engine evaluates performance models on each (re)configuration to a single number. In combination with variables representing the number of assigned resources, performance models are a powerful feature to describe adaptive workloads. ElastiSim supports the following variables in performance models for tasks:
 
-| Variable              | Description                                                                               |
-|-----------------------|-------------------------------------------------------------------------------------------|
-| ``num_nodes``         | The number of assigned compute nodes                                                      |
-| ``num_gpus_per_node`` | The number of assigned GPUs per compute node                                              |
-| ``num_gpus``          | The total number of assigned GPUs (syntactic sugar for ``num_nodes * num_gpus_per_node``) |
-| ``num_nodes_min``     | Requested number of nodes (minimum, only available for evolving requests)                 |
-| ``num_nodes_max``     | Requested number of nodes (maximum, only available for evolving requests)                 |
-| ``phase_iteration``   | Iteration number of the phase (starting at 0, only available for evolving requests)       |
+| Variable            | Description                                                                             |
+| ------------------- | --------------------------------------------------------------------------------------- |
+| `num_nodes`         | The number of assigned compute nodes                                                    |
+| `num_gpus_per_node` | The number of assigned GPUs per compute node                                            |
+| `num_gpus`          | The total number of assigned GPUs (syntactic sugar for `num_nodes * num_gpus_per_node`) |
+| `num_nodes_min`     | Requested number of nodes (minimum, only available for evolving requests)               |
+| `num_nodes_max`     | Requested number of nodes (maximum, only available for evolving requests)               |
+| `phase_iteration`   | Iteration number of the phase (starting at 0, only available for evolving requests)     |
 
 {: .note }
-Phases specify evolving requests _before_ they start. The variable ``phase_iteration`` starts with the value 0 (e.g., for a phase with five iterations, ``phase_iteration`` will evaluate to the values [0,4]). In phases that are not repetitively executed (i.e., ``iterations`` is unspecified or 1), ``phase_iteration`` will evaluate to 0.
+Phases specify evolving requests _before_ they start. The variable `phase_iteration` starts with the value 0 (e.g., for a phase with five iterations, `phase_iteration` will evaluate to the values [0,4]). In phases that are not repetitively executed (i.e., `iterations` is unspecified or 1), `phase_iteration` will evaluate to 0.
 
 ## Job arguments
 
@@ -32,7 +32,7 @@ Phases do not support variables representing the number of assigned resources in
 
 ## Example
 
-The following example shows two jobs specifying different arguments to adjust the simulated load. The computational load per node (note the ``uniform`` distribution pattern) in the ``cpu`` task depends on the actively configured number of nodes.
+The following example shows two jobs specifying different arguments to adjust the simulated load. The computational load per node (note the `uniform` distribution pattern) in the `cpu` task depends on the actively configured number of nodes.
 
 ### Jobs
 

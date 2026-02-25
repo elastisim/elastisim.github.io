@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Acknowledgement
+title: Acknowledgment
 nav_order: 8
 ---
 
-# Acknowledgement
+# Acknowledgment
 
 If you have used ElastiSim in your research or publication, please cite the original paper.
 
@@ -31,4 +31,4 @@ If you have used ElastiSim in your research or publication, please cite the orig
 
 ### Citation (ACM style)
 
-Taylan Özden, Tim Beringer, Arya Mazaheri, Hamid Mohammadi Fard, and Felix Wolf. 2022. ElastiSim: A Batch-System Simulator for Malleable Workloads. In *Proceedings of the 51st International Conference on Parallel Processing (ICPP '22)*. Association for Computing Machinery, New York, NY, USA, Article 40, 1–11. [https://doi.org/10.1145/3545008.3545046](https://doi.org/10.1145/3545008.3545046)
+Taylan Özden, Tim Beringer, Arya Mazaheri, Hamid Mohammadi Fard, and Felix Wolf. 2022. ElastiSim: A Batch-System Simulator for Malleable Workloads. In _Proceedings of the 51st International Conference on Parallel Processing (ICPP '22)_. Association for Computing Machinery, New York, NY, USA, Article 40, 1–11. [https://doi.org/10.1145/3545008.3545046](https://doi.org/10.1145/3545008.3545046)

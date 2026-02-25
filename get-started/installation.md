@@ -10,6 +10,7 @@ nav_order: 2
 ## Required libraries
 
 ElastiSim requires four libraries to be installed (or available):
+
 - [SimGrid](https://simgrid.org/) to simulate the underlying platform
 - [ZeroMQ](https://zeromq.org/) for C++ ([cppzmq](https://github.com/zeromq/cppzmq) binding) to communicate with the scheduler process
 - [JSON for Modern C++](https://json.nlohmann.me/) to read input files and wrap messages (provided with ElastiSim)
@@ -17,6 +18,7 @@ ElastiSim requires four libraries to be installed (or available):
 - [Activity Indicators for Modern C++](https://github.com/p-ranav/indicators) to indicate the progress of processed jobs (provided with ElastiSim)
 
 Depending on the scheduling interface, an additional ZeroMQ binding is required. ElastiSim currently supports a Python interface to write scheduling algorithms and therefore requires:
+
 - [PyZMQ](https://pyzmq.readthedocs.io/) to communicate with the simulator process
 
 ## Build (on Linux systems)

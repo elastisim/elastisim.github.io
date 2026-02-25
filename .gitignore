@@ -1,5 +1,7 @@
 .idea/
 .bundle/
+.devcontainer/
+.vscode/
 _site/
 _includes/
 vendor/

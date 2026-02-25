@@ -23,10 +23,10 @@ callouts:
     color: red
 
 mermaid:
-  version: "10.3.0"
+  version: "11.12.3"
 
 aux_links:
   "ElastiSim on GitHub":
     - "//github.com/elastisim"
 
-footer_content: "Copyright &copy; 2023, Technical University of Darmstadt."
+footer_content: "Copyright &copy; 2026, Technical University of Darmstadt."
