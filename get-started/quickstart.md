@@ -7,6 +7,8 @@ nav_order: 1
 
 # Quickstart
 
+## Dev Containers
+
 The easiest way to get started with ElastiSim is to use the [Dev Containers](https://github.com/elastisim/elastisim-devcontainer) we provide on GitHub. Dev Containers are containerized development environments native to VSCode. We provide all necessary setup files that automatically install required libraries and dependencies within a Docker container, facilitating rapid development. To learn more about Dev Containers, please visit the official [Dev Container documentation](https://code.visualstudio.com/docs/devcontainers/containers).
 
 We provide two flavors of Dev Containers for 1) users and 2) contributors. The user Dev Container builds the environment for developing custom scheduling algorithms using the ElastiSim simulation engine and the Python interface. After the setup, the container automatically clones the [example project](https://github.com/elastisim/example-project), enabling users to experiment immediately. In contrast, the contributor Dev Container targets developers contributing to the ElastiSim project and additionally includes the source code for both projects, the [simulation engine](https://github.com/elastisim/elastisim), and the [Python interface](https://github.com/elastisim/elastisim-python). Both Dev Containers provide all necessary settings, launch, and build files to run the experiment or compile the project immediately. If you use ElastiSim to develop and evaluate custom schedulers, we strongly advise using the user container, as it focuses on a minimal build and performance.
